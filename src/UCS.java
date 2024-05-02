@@ -39,10 +39,11 @@ public class UCS extends SearchAlgorithm {
         while (!this.lifeNode.isEmpty()) {
             // Expand the node with the lowest cost
             Node expandNode = this.lifeNode.poll();
+            this.explored.put(expandNode.getWord(), true);
             this.VisitedNodes++;
             
             // Check if the goal node is found
-            if (expandNode.getWord().equals(this.goal)) {
+            if (expandNode.getWord().equalsIgnoreCase(this.goal)) {
                 this.result = expandNode;
                 break;
             }
@@ -50,7 +51,6 @@ public class UCS extends SearchAlgorithm {
             // Add the neighbors of the expanded node to the priority queue
             for (String neighbor : this.dictionary.getAllOneCharDifferenceStrings(expandNode.getWord())) {
                 if (!this.explored.containsKey(neighbor)) { // Check if the neighbor has been explored
-                    this.explored.put(neighbor, true);
 
                     // g(n) = g(parent) + 1
                     Integer newCost = expandNode.getCost() + 1;

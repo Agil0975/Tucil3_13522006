@@ -38,10 +38,11 @@ public class GreedyBFS extends SearchAlgorithm {
         while (!this.lifeNode.isEmpty()) {
             // Expand the node with the lowest heuristic value
             Node expandNode = this.lifeNode.poll();
+            this.explored.put(expandNode.getWord(), true);
             this.VisitedNodes++;
             
             // Check if the goal node is found
-            if (expandNode.getWord().equals(this.goal)) {
+            if (expandNode.getWord().equalsIgnoreCase(this.goal)) {
                 this.result = expandNode;
                 break;
             }
@@ -49,7 +50,6 @@ public class GreedyBFS extends SearchAlgorithm {
             // Add the neighbors of the expanded node to the priority queue
             for (String neighbor : this.dictionary.getAllOneCharDifferenceStrings(expandNode.getWord())) {
                 if (!this.explored.containsKey(neighbor)) { // Check if the neighbor has been explored
-                    this.explored.put(neighbor, true);
 
                     // h(n) = heuristic function
                     Integer newHeuristic = this.dictionary.wordDistance(neighbor, this.goal);

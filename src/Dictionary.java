@@ -23,8 +23,8 @@ public class Dictionary {
      * Constructor
      * This constructor reads the words_alpha.txt file and stores the words in the dictionary array
      */
-    public Dictionary() {
-        String namaFile = "src/words_alpha.txt";
+    public Dictionary(String _namaFile) {
+        String namaFile = "src/dictionary/" + _namaFile;
         try {
             Scanner scanner = new Scanner(new File(namaFile));
             // Counting the number of lines in the file
@@ -76,7 +76,7 @@ public class Dictionary {
      */
     public boolean isWordInDictionary(String word) {
         for (int i = 0; i < length; i++) {
-            if (word.equals(dictionary[i])) {
+            if (word.equalsIgnoreCase(dictionary[i])) {
                 return true;
             }
         }
@@ -98,7 +98,7 @@ public class Dictionary {
         else {
             int count = 0;
             for (int i = 0; i < word1.length(); i++) {
-                if (word1.charAt(i) != word2.charAt(i)) {
+                if (Character.toLowerCase(word1.charAt(i)) != Character.toLowerCase(word2.charAt(i))) {
                     count++;
                 }
             }
@@ -137,8 +137,8 @@ public class Dictionary {
      *  Testing
      */
     public static void main(String[] args) {
-        Dictionary dictionary = new Dictionary();
-        String[] words = dictionary.getAllOneCharDifferenceStrings("west");
+        Dictionary dictionary = new Dictionary("dictionary.txt");
+        String[] words = dictionary.getAllOneCharDifferenceStrings("WEST");
         for (String word : words) {
             System.out.println(word);
         }

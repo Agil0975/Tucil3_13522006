@@ -12,7 +12,7 @@ public class Main {
         System.out.println("||     Selamat Datang Word Ladder Solver!     ||");
         System.out.println("||============================================||");
         Scanner scanner = new Scanner(System.in);
-        Dictionary dictionary = new Dictionary();
+        Dictionary dictionary = new Dictionary("words_alpha.txt");
 
         System.out.println();
         System.out.println("==================== Input ====================");
@@ -48,9 +48,9 @@ public class Main {
         // input algorithm choice
         System.out.println();
         System.out.println("Masukkan algoritma yang ingin digunakan: ");
-        System.out.println("    1. A* Algorithm");
+        System.out.println("    1. Uniform Cost Search Algorithm");
         System.out.println("    2. Greedy Best First Search Algorithm");
-        System.out.println("    3. Uniform Cost Search Algorithm");
+        System.out.println("    3. A* Algorithm");
         String choice = null;
         isValid = false;
         while (isValid == false) {
@@ -69,21 +69,18 @@ public class Main {
         SearchAlgorithm searchAlgorithm = null;
         switch (choice) {
             case "1":
-                searchAlgorithm = new AStar(start, goal, dictionary);
+                searchAlgorithm = new UCS(start, goal, dictionary);
                 break;
             case "2":
                 searchAlgorithm = new GreedyBFS(start, goal, dictionary);
                 break;
             case "3":
-                searchAlgorithm = new UCS(start, goal, dictionary);
+                searchAlgorithm =  new AStar(start, goal, dictionary);
                 break;
-            default:
-                System.out.println("Pilihan tidak valid");
-                System.exit(0);
         }
         searchAlgorithm.search();
 
         // print the result
         searchAlgorithm.printResult();
-    }    
+    }
 }
