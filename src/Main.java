@@ -8,9 +8,9 @@ import java.util.*;
  */
 public class Main {
     public static void main(String[] args) {
-        System.out.println("||============================================||");
-        System.out.println("||     Selamat Datang Word Ladder Solver!     ||");
-        System.out.println("||============================================||");
+        System.out.println("||===========================================||");
+        System.out.println("||     Selamat Datang Word Ladder Solver     ||");
+        System.out.println("||===========================================||");
         Scanner scanner = new Scanner(System.in);
         Dictionary dictionary = new Dictionary("words_alpha.txt");
 

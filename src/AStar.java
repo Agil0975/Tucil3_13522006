@@ -28,6 +28,19 @@ public class AStar extends SearchAlgorithm {
     }
 
     /**
+     * Abstract method to calculate g(n) and h(n)
+     */
+    public Integer gn(Node parent) {
+    // g(n) = Many changes have been made from the start word
+        return parent.getPath().size() + 1;
+    }
+
+    public Integer hn(String current) {
+    // h(n) = Heuristic function is calculated based on the number of different letters of the target word
+        return this.dictionary.wordDistance(current, this.goal);
+    }
+
+    /**
      * Implement A* algorithm
      */
     public void search() {
@@ -55,13 +68,11 @@ public class AStar extends SearchAlgorithm {
             for (String neighbor : this.dictionary.getAllOneCharDifferenceStrings(expandNode.getWord())) {
                 if (!this.explored.containsKey(neighbor)) { // Check if the neighbor has been explored
                     
-                    // g(n) = g(parent) + 1
-                    Integer newCost = expandNode.getCost() + 1;
-                    // h(n) = heuristic function
-                    Integer newHeuristic = this.dictionary.wordDistance(neighbor, this.goal);
+                    // f(n) = g(n) + h(n)
+                    Integer fn = gn(expandNode) + hn(neighbor);
                     
                     // Create a new node and add it to the priority queue
-                    Node newNode = new Node(neighbor, newCost + newHeuristic);
+                    Node newNode = new Node(neighbor, fn);
                     newNode.setPath(new ArrayList<String>(expandNode.getPath()));
                     newNode.addPath(expandNode.getWord());
                     this.lifeNode.add(newNode);

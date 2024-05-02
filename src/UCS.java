@@ -25,6 +25,20 @@ public class UCS extends SearchAlgorithm {
     }
 
     /**
+     * Abstract method to calculate g(n) and h(n)
+     */
+    public Integer gn(Node parent) {
+    // g(n) = Many changes have been made from the start word
+        return parent.getPath().size() + 1;
+    }
+
+    public Integer hn(String current) {
+    // h(n) = Heuristic function is calculated based on the number of different letters of the target word
+    // In Uniform Cost Search, h(n) is not used
+        return 0;
+    }
+
+    /**
      * Implement UCS algorithm
      */
     public void search() {
@@ -52,11 +66,11 @@ public class UCS extends SearchAlgorithm {
             for (String neighbor : this.dictionary.getAllOneCharDifferenceStrings(expandNode.getWord())) {
                 if (!this.explored.containsKey(neighbor)) { // Check if the neighbor has been explored
 
-                    // g(n) = g(parent) + 1
-                    Integer newCost = expandNode.getCost() + 1;
+                    // f(n) = g(n)
+                    Integer fn = gn(expandNode);
                     
                     // Create a new node and add it to the priority queue
-                    Node newNode = new Node(neighbor, newCost);
+                    Node newNode = new Node(neighbor, fn);
                     newNode.setPath(new java.util.ArrayList<String>(expandNode.getPath()));
                     newNode.addPath(expandNode.getWord());
                     this.lifeNode.add(newNode);

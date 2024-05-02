@@ -53,9 +53,9 @@ public abstract class SearchAlgorithm {
 
             System.out.println("Jalur:");
             for (int i = 0; i < panjangPath; i++) {
-                System.out.println("   "+ (i + 1) + ". " + this.result.getPath().get(i));
+                System.out.println("   "+ (i + 1) + ". " + this.result.getPath().get(i).toLowerCase());
             }
-            System.out.println("   " + (panjangPath + 1) + ". " + this.result.getWord());
+            System.out.println("   " + (panjangPath + 1) + ". " + this.result.getWord().toLowerCase());
             
             System.out.println("Banyak node dikunjungi  : " + this.VisitedNodes + " node");
             printExecutionTime();
@@ -77,4 +77,10 @@ public abstract class SearchAlgorithm {
      * Abstract method to implement search algorithm
      */
     public abstract void search();
+
+    /**
+     * Abstract method to calculate g(n) and h(n)
+     */
+    public abstract Integer gn(Node parent);
+    public abstract Integer hn(String current);
 }
