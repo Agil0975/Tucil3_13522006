@@ -1,21 +1,21 @@
-package src;
+package src.algorithm;
 
 import java.util.ArrayList;
 
-/* 
- *  Class Node
- *  This class is used to store a node in the priority queue
+/** 
+ * Class Node
+ * This class is used to store a node in the priority queue
  */
 public class Node implements Comparable<Node>{
-    /*  
-     *  Attributes
+    /**
+     * Attributes
      */
     private String word;                // word = n
     private int cost;                   // cost = f(n)
     private ArrayList<String> path;     // path = [start, ..., parrrent of n]
 
-    /*
-     *  Methods
+    /**
+     * Methods
      */
     
     /**
@@ -91,11 +91,15 @@ public class Node implements Comparable<Node>{
      * @param other the other node to be compared
      * @return -1, 0, or 1
      * If the cost of this node is less than the cost of other node, return -1
-     * If the cost of this node is equal to the cost of other node, return 0
      * If the cost of this node is greater than the cost of other node, return 1
+     * If the cost of this node is equal to the cost of other node, compare the word with lexicographic order
      */
     @Override
     public int compareTo(Node other) {
-        return Integer.compare( this.cost, other.cost);
+        if (Integer.compare(this.cost, other.cost) != 0) {
+            return Integer.compare(this.cost, other.cost);
+        } else {
+            return this.word.compareTo(other.word);
+        }
     }
 }

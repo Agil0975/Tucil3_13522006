@@ -1,19 +1,20 @@
-package src;
+package src.algorithm;
 
-import java.util.*;
+import src.dictionary.Dictionary;
+import java.util.ArrayList;
 
-/*
- *  Class AStar
- *  This class is used to implement A* algorithm
- *  A* is a search algorithm that finds the shortest path between the initial node and the goal node
- *  It is an informed search algorithm that uses a heuristic function to estimate the cost of the cheapest path
- *  f(n) = g(n) + h(n)
- *  g(n) = Many changes have been made from the start word
- *  h(n) = Heuristic function is calculated based on the number of different letters of the target word
+/**
+ * Class AStar
+ * This class is used to implement A* algorithm
+ * A* is a search algorithm that finds the shortest path between the initial node and the goal node
+ * It is an informed search algorithm that uses a heuristic function to estimate the cost of the cheapest path
+ * f(n) = g(n) + h(n)
+ * g(n) = Many changes have been made from the start word
+ * h(n) = Heuristic function is calculated based on the number of different letters of the target word
  */
 public class AStar extends SearchAlgorithm {
-    /*
-     *  Method
+    /**
+     * Method
      */
     
     /**

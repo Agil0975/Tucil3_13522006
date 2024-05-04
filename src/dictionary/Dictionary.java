@@ -1,27 +1,28 @@
-package src;
+package src.dictionary;
 
 import java.util.Scanner;
 import java.io.File;
 import java.io.FileNotFoundException;
 
-/*
- *  Class Dictionary
- *  This class is used to store a dictionary of words and some methods to manipulate the dictionary
+/**
+ * Class Dictionary
+ * This class is used to store a dictionary of words and some methods to manipulate the dictionary
  */
 public class Dictionary {
-    /*  
-     *  Attributes
+    /**  
+     * Attributes
      */
     private String[] dictionary;
     private int length;
 
-    /*
-     *  Methods
+    /**
+     * Methods
      */
 
     /**
      * Constructor
-     * This constructor reads the words_alpha.txt file and stores the words in the dictionary array
+     * 
+     * This constructor reads the txt file and stores the words in the dictionary array
      */
     public Dictionary(String _namaFile) {
         String namaFile = "src/dictionary/" + _namaFile;
@@ -48,24 +49,6 @@ public class Dictionary {
         catch (FileNotFoundException e) {
             System.out.println("File " + namaFile + " tidak ditemukan.");
         }
-    }
-
-    /**
-     * Getter
-     * 
-     * @return dictionary array
-     */
-    public String[] getWords() {
-        return this.dictionary;
-    }
-
-    /**
-     * Getter
-     * 
-     * @return length of dictionary array
-     */
-    public int getLength() {
-        return this.length;
     }
 
     /**
@@ -130,19 +113,5 @@ public class Dictionary {
             resultTrimmed[i] = result[i];
         }
         return resultTrimmed;
-    }
-
-
-    /*
-     *  Testing
-     */
-    public static void main(String[] args) {
-        Dictionary dictionary = new Dictionary("dictionary.txt");
-        String[] words = dictionary.getAllOneCharDifferenceStrings("WEST");
-        for (String word : words) {
-            System.out.println(word);
-        }
-        System.out.println("nestle in dictionary: " + dictionary.isWordInDictionary("nestle"));
-        System.out.println("nastle in dictionary: " + dictionary.isWordInDictionary("nastle"));
     }
 }
