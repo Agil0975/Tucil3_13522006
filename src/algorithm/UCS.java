@@ -30,12 +30,12 @@ public class UCS extends SearchAlgorithm {
     /**
      * Abstract method to calculate g(n) and h(n)
      */
-    public Integer gn(Node parent) {
+    protected Integer gn(Node parent) {
     // g(n) = Many changes have been made from the start word
         return parent.getPath().size() + 1;
     }
 
-    public Integer hn(String current) {
+    protected Integer hn(String current) {
     // h(n) = Heuristic function is calculated based on the number of different letters of the target word
     // In Uniform Cost Search, h(n) is not used
         return 0;
@@ -66,7 +66,7 @@ public class UCS extends SearchAlgorithm {
             }
 
             // Add the neighbors of the expanded node to the priority queue
-            for (String neighbor : this.dictionary.getAllOneCharDifferenceStrings(expandNode.getWord())) {
+            for (String neighbor : this.dictionary.getAllOneCharDifferenceStrings(expandNode.getWord(), this.wordWithSameLengthWithQuery)) {
                 if (!this.explored.containsKey(neighbor)) { // Check if the neighbor has been explored
 
                     // f(n) = g(n)

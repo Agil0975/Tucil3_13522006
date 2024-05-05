@@ -90,19 +90,45 @@ public class Dictionary {
     }
 
     /**
-     * Method to get all words in dictionary array that are different by one letter with word
+     * Method to get all words in dictionary array that are length n
      * 
-     * @param word
+     * @param n length of the words
+     * @return array of words that are length n
+     */
+    public String[] getAllWordsWithNLength(int n) {
+        String[] result = new String[length];
+    
+        // Counting the number of words that are length n
+        int count = 0;
+        for (int i = 0; i < length; i++) {
+            if (dictionary[i].length() == n) {
+                result[count] = dictionary[i];
+                count++;
+            }
+        }
+
+        // Trimming the result array
+        String[] resultTrimmed = new String[count];
+        for (int i = 0; i < count; i++) {
+            resultTrimmed[i] = result[i];
+        }
+        return resultTrimmed;
+    }
+
+    /**
+     * Method to get all words in array of word that are different by one letter with word
+     * 
+     * @param word word to be compared
      * @return array of words that are different by one letter with word
      */
-    public String[] getAllOneCharDifferenceStrings(String word) {
-        String[] result = new String[length];
+    public String[] getAllOneCharDifferenceStrings(String word, String[] listOfWords) {
+        String[] result = new String[listOfWords.length];
     
         // Counting the number of words that are different by one letter with word
         int count = 0;
-        for (int i = 0; i < length; i++) {
-            if (wordDistance(word, dictionary[i]) == 1) {
-                result[count] = dictionary[i];
+        for (int i = 0; i < listOfWords.length; i++) {
+            if (wordDistance(word, listOfWords[i]) == 1) {
+                result[count] = listOfWords[i];
                 count++;
             }
         }

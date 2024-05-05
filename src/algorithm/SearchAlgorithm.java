@@ -11,14 +11,15 @@ public abstract class SearchAlgorithm {
     /**
      * Attributes
      */
-    protected String start;                     // Start word
-    protected String goal;                      // Goal word
-    protected Dictionary dictionary;            // Dictionary of words
-    protected Integer VisitedNodes = 0;         // Number of visited nodes
-    protected Long executionTime;               // Execution time
-    protected Node result;                      // Result of the search
-    protected PriorityQueue<Node> lifeNode;     // Priority queue of nodes
-    protected Map<String, Boolean> explored;    // Map of explored nodes, key = word, value = true (if the word has been expanded)
+    protected String start;                         // Start word
+    protected String goal;                          // Goal word
+    protected Dictionary dictionary;                // Dictionary of words
+    protected String[] wordWithSameLengthWithQuery; // Array of words with the same length as the query
+    protected Integer VisitedNodes = 0;             // Number of visited nodes
+    protected Long executionTime;                   // Execution time
+    protected Node result;                          // Result of the search
+    protected PriorityQueue<Node> lifeNode;         // Priority queue of nodes
+    protected Map<String, Boolean> explored;        // Map of explored nodes, key = word, value = true (if the word has been expanded)
 
     /**
      * Methods
@@ -38,6 +39,7 @@ public abstract class SearchAlgorithm {
         this.lifeNode = new PriorityQueue<Node>();
         this.explored = new HashMap<String, Boolean>();
         this.result = null;
+        this.wordWithSameLengthWithQuery = dictionary.getAllWordsWithNLength(start.length());
     }
 
     /**
@@ -75,6 +77,6 @@ public abstract class SearchAlgorithm {
     /**
      * Abstract method to calculate g(n) and h(n)
      */
-    public abstract Integer gn(Node parent);
-    public abstract Integer hn(String current);
+    protected abstract Integer gn(Node parent);
+    protected abstract Integer hn(String current);
 }

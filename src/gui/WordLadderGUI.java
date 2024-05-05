@@ -21,6 +21,7 @@ public class WordLadderGUI extends JFrame {
     private JComboBox<String> algoritmaBox;     // Algorithm choice box
     private JButton searchButton;               // Search button
     private JTextArea outputArea;               // Output
+    private JScrollPane scrollPane;             // Scroll pane
 
     /**
      * Methods
@@ -36,7 +37,7 @@ public class WordLadderGUI extends JFrame {
 
         // Create Window
         setTitle("Word Ladder Solver");
-        setSize(400, 300);
+        setSize(400, 700);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
 
@@ -81,9 +82,11 @@ public class WordLadderGUI extends JFrame {
 
         // output area
         outputArea = new JTextArea();
-        outputArea.setBounds(20, 150, 345, 100);
+        scrollPane = new JScrollPane(outputArea); // scroll pane
+        scrollPane.setBounds(20, 150, 345, 495);
         outputArea.setFont(new Font("Courier New", Font.PLAIN, 12));
-        panel.add(outputArea);
+        outputArea.setMargin(new Insets(10, 10, 10, 10));
+        panel.add(scrollPane);
 
         // search button
         searchButton = new JButton("Cari");
@@ -138,7 +141,7 @@ public class WordLadderGUI extends JFrame {
                 break;
             case "Greedy Best First Search Algorithm":
                 System.out.println("Running Greedy BFS...");
-                searchAlgorithm = new GreedyBFS(startWord, goalWord, dictionary);
+                searchAlgorithm = new GreedyBeFS(startWord, goalWord, dictionary);
                 break;
             case "A* Algorithm":
                 System.out.println("Running A*...");
@@ -146,22 +149,11 @@ public class WordLadderGUI extends JFrame {
                 break;
         }
         searchAlgorithm.search();
-        Node result = searchAlgorithm.getResult();
+        System.out.println("Finished!");
 
         // Output the result
-        int outputAreaHeight;
-        if (result != null) {
-            outputAreaHeight = (result.getPath().size() + 1 + 4) * 14 + 20;
-        } else {
-            outputAreaHeight = 100;
-        }
-        outputArea.setBounds(20, 150, 345, outputAreaHeight);
+        Node result = searchAlgorithm.getResult();
         outputArea.setText(printResult(result, searchAlgorithm.getExecutionTime(), searchAlgorithm.getVisitedNodes()));
-        outputArea.setMargin(new Insets(10, 10, 10, 10));
-
-        // Resize the window
-        int windowHeight = Math.max(200 + outputAreaHeight, 300);
-        setSize(400, windowHeight);
     }
 
     /**
@@ -173,10 +165,11 @@ public class WordLadderGUI extends JFrame {
      * @return the output string
      */
     private String printResult(Node node, long executionTime, int visitedNodes) {
+        String output;
+
         if (node == null) {
-            return "Solusi tidak ditemukan.";
+            output = "Solusi tidak ditemukan.\n";
         } else {
-            String output;
             output = "Panjang jalur: " + (node.getPath().size()) + "\n";
 
             output += "Jalur:\n";
@@ -184,15 +177,15 @@ public class WordLadderGUI extends JFrame {
                 output += "   " + (i + 1) + ". " + node.getPath().get(i).toLowerCase() + "\n";
             }
             output += "   " + (node.getPath().size() + 1) + ". " + node.getWord().toLowerCase() + "\n";
-            
-            output += "Banyak node dikunjungi  : " + visitedNodes + " node\n";
-            
-            if (executionTime > 1000) {
-                output += "Waktu eksekusi          : " + executionTime / 1000 + " s " + executionTime % 1000 + " ms\n";
-            } else {
-                output += "Waktu eksekusi          : " + executionTime + " ms\n";
-            }
-            return output;
         }
+        
+        output += "Banyak node dikunjungi  : " + visitedNodes + " node\n";
+            
+        if (executionTime > 1000) {
+            output += "Waktu eksekusi          : " + executionTime / 1000 + " s " + executionTime % 1000 + " ms\n";
+        } else {
+            output += "Waktu eksekusi          : " + executionTime + " ms\n";
+        }
+        return output;
     }
 }
