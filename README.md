@@ -29,7 +29,7 @@ Untuk menjalankan program ini, perlu menginstal **Java Environment** pada perang
 `$ javac -d bin src/*.java`
 
 ## **Cara Menjalankan Program**
-Jalankan perintah berikut di terminal untuk menjalankan program:
+Jalankan perintah berikut di terminal untuk menjalankan program: <br>
 `$ java -cp bin src.Main `
 
 ## **Screenshots**
