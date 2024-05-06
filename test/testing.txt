@@ -1,0 +1,27 @@
+Test Case 1
+Start Word  : warm
+Goal Word   : heat
+
+Test Case 2
+Start Word  : temple
+Goal Word   : hooped
+
+Test Case 3
+Start Word  : hooped
+Goal Word   : temple
+
+Test Case 4
+Start Word  : light
+Goal Word   : civil
+
+Test Case 5
+Start Word  : scar
+Goal Word   : cavy
+
+Test Case 6
+Start Word  : scrum
+Goal Word   : agile
+
+Test Case 7
+Start Word  : detector
+Goal Word   : scamming

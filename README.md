@@ -33,9 +33,9 @@ Jalankan perintah berikut di terminal untuk menjalankan program:
 `$ java -cp bin src.Main `
 
 ## **Screenshots**
-Input:
+Input: <br>
 ![Example screenshot](./img/Input.png)
-Output:
+Output: <br>
 ![Example screenshot](./img/Output.png)
 
 ## **Project Status**
