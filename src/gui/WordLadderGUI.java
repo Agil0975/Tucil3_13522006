@@ -148,9 +148,14 @@ public class WordLadderGUI extends JFrame {
                 searchAlgorithm =  new AStar(startWord, goalWord, dictionary);
                 break;
         }
-        searchAlgorithm.search();
-        System.out.println("Finished!");
 
+        try {
+            searchAlgorithm.search();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        System.out.println("Finished!");
+        
         // Output the result
         Node result = searchAlgorithm.getResult();
         outputArea.setText(printResult(result, searchAlgorithm.getExecutionTime(), searchAlgorithm.getVisitedNodes()));
