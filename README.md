@@ -35,7 +35,7 @@ Jalankan perintah berikut di terminal untuk menjalankan program:
 ## **Screenshots**
 Input: <br>
 ![Example screenshot](./img/Input.png)
-Output: <br>
+<br>Output: <br>
 ![Example screenshot](./img/Output.png)
 
 ## **Project Status**
