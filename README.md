@@ -7,6 +7,9 @@ Penyelesaian Permainan Word Ladder Menggunakan Algoritma UCS, Greedy Best First 
 * [Requirements](#requirements)
 * [Cara Mengkompilasi Program](#cara-mengkompilasi-program)
 * [Cara Menjalankan Program](#cara-menjalankan-program)
+* [Screenshots](#screenshots)
+* [Project Status](#project-status)
+* [Room for Improvement](#room-for-improvement)
 * [Author](#author)
 
 ## **Deskripsi Singkat**
@@ -15,7 +18,7 @@ Permainan Word Ladder adalah sebuah permainan teka-teki kata klasik di mana pema
 Program "Tucil3_13522006" merupakan sebuah program dalam bahasa Java untuk mencari solusi permainan Word Ladder dengan menggunakan Algoritma UCS (Uniform Cost Search), Greedy BeFS (Greedy Best First Search), dan A*.
 
 ## **Requirements**
-Untuk menjalankan program ini, perlu menginstal **Java** pada perangkat yang digunakan.
+Untuk menjalankan program ini, perlu menginstal **Java Environment** pada perangkat yang digunakan.
 
 ## **Cara Mengkompilasi Program**
 1. Clone repositori ini. <br>
@@ -28,6 +31,20 @@ Untuk menjalankan program ini, perlu menginstal **Java** pada perangkat yang dig
 ## **Cara Menjalankan Program**
 Jalankan perintah berikut di terminal untuk menjalankan program:
 `$ java -cp bin src.Main `
+
+## **Screenshots**
+Input:
+![Example screenshot](./img/Input.png)
+Output:
+![Example screenshot](./img/Output.png)
+
+## **Project Status**
+Project is: _complete_.
+
+## **Room for Improvement**
+Room for improvement:
+- GUI Program
+- Efisiensi Algoritma Pencarian 
 
 ## **Author**
 | **NIM**  |       **Nama**        | **Kelas** |       
